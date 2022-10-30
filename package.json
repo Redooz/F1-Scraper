@@ -1,7 +1,7 @@
 {
-  "name": "formula1-scrapper",
+  "name": "formula1-scraper",
   "version": "1.0.0",
-  "description": "A Scrapper for Formula 1 webpage",
+  "description": "A Scraper for Formula 1 webpage",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
