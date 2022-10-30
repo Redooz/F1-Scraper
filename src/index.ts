@@ -26,6 +26,7 @@ AxiosInstance.get(url)
         .replace(/(\r\n|\n|\r)/gm, "")
         .trim();
 
+        //Ya que se está haciendo uso de una tabla, pues toca ir recorriendo cada fila
         let strFecha:string = "tr:nth-child(" + (i+1) + ") > td.dark.hide-for-mobile";
         const fecha: string = $(element).find(strFecha).text().trim();
 
