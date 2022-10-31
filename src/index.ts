@@ -13,8 +13,16 @@ interface infoCarrera {
     tiempo: string;
 }
 
-AxiosInstance.get(url)
-.then( function (response) {
+try {
+    scraping();    
+} catch (error) {
+    console.error(error);
+    
+}
+
+async function scraping() {
+    const response = await AxiosInstance.get(url);
+    
     const html = response.data;
     const $ = cheerio.load(html);
     const resultadosCarreras = $(".resultsarchive-table > tbody > tr");
@@ -55,6 +63,4 @@ AxiosInstance.get(url)
     })
 
     console.log(resultados);
-    
-}).catch(console.error);
-
+}
