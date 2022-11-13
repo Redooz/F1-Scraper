@@ -42,7 +42,7 @@ async function scraping() {
         .trim();
 
         //Ya que se está haciendo uso de una tabla, pues toca ir recorriendo cada fila
-        let strFecha:string = `tr:nth-child(${i+1}) > td.dark.hide-for-mobile;
+        let strFecha:string = `tr:nth-child(${i+1}) > td.dark.hide-for-mobile`;
         const fecha: string = $(element).find(strFecha).text().trim();
 
         const nombreGanador: string = $(element).find("td:nth-child(4) > span.hide-for-tablet").text();
