@@ -3,6 +3,7 @@ import cheerio from "cheerio";
 
 const url:string = "https://www.formula1.com/en/results.html/2022/races.html";
 const AxiosInstance = axios.create();
+const mysql = require("mysql");
 
 interface infoCarrera {
     prix: string;
@@ -13,11 +14,17 @@ interface infoCarrera {
     tiempo: string;
 }
 
+let con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "f1"
+})
+
 try {
-    scraping();    
+    scraping();
 } catch (error) {
     console.error(error);
-    
 }
 
 async function scraping() {
@@ -62,5 +69,19 @@ async function scraping() {
 
     })
 
+    con.connect(function (err) {
+        if (err) throw err;
+        console.log("Conexion a la bd exitosa");
+
+        resultados.forEach(function (resultado) {
+            let sql: string = `INSERT INTO carreras (prix, fecha, ganador, equipo, vueltas, tiempo) VALUES
+            ('${resultado.prix}', '${resultado.fecha}', '${resultado.ganador}', '${resultado.equipo}', ${resultado.vueltas}, '${resultado.tiempo}')`;
+
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+            })
+        })
+        con.end();
+    })
     console.log(resultados);
 }
