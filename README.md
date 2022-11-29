@@ -1,6 +1,6 @@
 # F1 Scraper
 
-This scraping project uses [F1 2022 races Website](https://www.formula1.com/en/results.html/2022/races.html), once the informatio has been gotten, it's inserted into a MySQL database
+This scraping project uses [F1 2022 races Website](https://www.formula1.com/en/results.html/2022/races.html), once the information has been gotten, it's inserted into a MySQL database
 
 
 ## Build and run
